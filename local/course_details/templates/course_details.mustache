@@ -1,0 +1,42 @@
+<!-- page header / course name and image section--->
+
+<section>
+	<div class="container-fluid p-0 pt-5 pb-5" style="position:relative;">
+    	<div class="Parallax-div" style="background-image:url({{{course_image_url}}});"></div>
+        <div class="overlay-div black-div"></div>
+        <div class="container text-center pt-5 pb-5" style="position:relative;">
+        	<h3 class=" cdoverlay_heading">{{{course_name}}}</h3>
+        </div>
+    </div>
+</section>
+
+
+<section>
+
+	<div class="container-fluid p-0">
+		<div class="row pt-5 pb-3">
+			<div class="col-md-7 pb-3">
+				<div class="col-md-12">
+				{{#course_extradetails_arr1}}
+				<h5>{{{name}}}</h5>
+				<p>{{{value}}}</p>
+				{{/course_extradetails_arr1}}
+				</div>
+				<div class="col-md-12 p-3 text-center large-screen-show">
+					<a href="{{{enrol_url}}}" class="btn btn-primary">{{#str}}getaccess, local_course_details{{/str}}</a>
+				</div>				
+			</div>
+			<div class="col-md-5 col-md-5 side-column">
+				<div class="col-md-12">
+				{{#course_extradetails_arr2}}
+				<p><strong>{{{name}}} : </strong>{{{value}}}</p>
+				{{/course_extradetails_arr2}}
+				</div>
+				<div class="col-md-12 p-3 text-center small-screen-show">
+					<a href="{{{enrol_url}}}" class="btn btn-primary">{{#str}}getaccess, local_course_details{{/str}}</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>

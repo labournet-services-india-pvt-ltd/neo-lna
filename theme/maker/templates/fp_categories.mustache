@@ -1,0 +1,44 @@
+{{#usecategories}}
+<div class="categories-section">
+	{{#categoriessectiontitle}}
+    <h2 class="section-title">{{{categoriessectiontitle}}}</h2>
+    {{/categoriessectiontitle}}
+
+    <div class="container-fluid">
+	    <div class="section-inner">
+		    <div class="row">
+			    
+			    {{#categories}}
+				{{#hascategory}}
+			    <div class="item item-{{{categorycount}}} col-12 col-md-6 col-lg-3">
+				    <div class="item-inner media align-items-center">
+					  {{#categoryimage}}
+					  <div class="icon-holder">
+						  <img src="{{{categoryimage}}}" alt="image">
+					  </div>
+					  {{/categoryimage}}
+					  
+					  <div class="media-body">
+						{{#categorytitle}}
+					    <h5 class="title">{{{categorytitle}}}</h5>
+					    {{/categorytitle}}
+					    {{#categorycontent}}
+                        <div class="desc">{{{categorycontent}}}</div>
+                        {{/categorycontent}}
+                        
+                        {{#categoryurl}}
+						<a class="item-link" href="{{{categoryurl}}}"></a>
+						{{/categoryurl}}
+						
+					  </div>
+					  
+					</div>
+			    </div><!--//item-->
+			    {{/hascategory}}	    
+			    {{/categories}}
+		    </div><!--//row-->
+		</div><!--//section-inner-->
+    </div><!--//container-fluid-->
+    
+</div><!--//categories-section-->
+{{/usecategories}}

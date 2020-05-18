@@ -1,0 +1,35 @@
+<?php
+defined('MOODLE_INTERNAL') || die();
+$string['pluginname'] = 'Trainer Analysis';
+$string['title'] = 'Trainer Analysis';
+$string['trainerinpltform'] = 'No of Trainer in Platform';
+$string['coursewithtrainer'] = 'Total Course with Trainer';
+$string['coursewithouttrainer'] = 'Total Course without Trainer';
+$string['slno'] = 'Sl No';
+$string['trainername'] = 'Trainer Name';
+$string['coursesteaching'] = 'No of Courses Teaching';
+$string['nooflogin'] = 'No of Logins';
+$string['maxlogtrainer'] = 'Maximum Logged in Trainers';
+$string['toptrainer'] = 'Top 5 Trainers';
+$string['courses'] = 'Courses';
+$string['accessdenied'] = 'Access Denied!';
+$string['traineranalysis'] = 'View Trainer Analysis';
+$string['countstudent'] = 'Student Count in course';
+$string['countstudentingroup'] = 'Candidates Enrolled in Batch (LN Academy)';
+$string['countstudentingrouploggedin'] = 'No of Candidates Logged in';
+$string['zone'] = 'Zone';
+$string['liveclassname'] = 'Live Class';
+$string['timespent'] = 'Time duration of class- Actual';
+$string['batch'] = 'Batch';
+$string['lastsessdate'] = 'Session Date';
+$string['starttime'] = 'Trainer Login Time';
+$string['endtime'] = 'Trainer Logout Time';
+$string['recordinglink'] = 'Class recordings';
+$string['studentattendancelink'] = 'Attendence';
+
+$string['users'] = 'Total Students';
+$string['courses'] = 'Total Courses';
+$string['usersenrolled'] = 'Users who is enrolled in at least one course';
+$string['coursesenrolled'] = 'Total Course Access';
+$string['visitors'] = 'Total Visitors';
+$string['totaltrainer'] = 'Total Trainers';

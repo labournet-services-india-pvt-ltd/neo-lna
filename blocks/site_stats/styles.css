@@ -1,0 +1,19 @@
+#site-stats .row .col-md-2{
+    padding-right: 3px !important;
+    padding-left: 3px !important;
+}
+#site-stats .row .col-md-2 i{
+	font-size: 60px;
+	}
+
+#site-stats .row .col-md-2 .card-body{
+	font-size: 25px;
+	}
+
+#site-stats .row .col-md-2 .card{
+	border-radius: 25px;
+	}
+
+#site-stats .card-header {
+border-bottom: none !important;
+}

@@ -1,0 +1,45 @@
+{{#useteachers}}
+ <div class="teachers-section">
+    <div class="container-fluid">
+	    {{#teachersectiontitle}}
+	    <h2 class="section-title">
+		   {{{teachersectiontitle}}}
+	    </h2>
+	    {{/teachersectiontitle}}
+
+	    <div class="section-inner">
+		    <div class="teachers-carousel owl-carousel owl-theme">
+			    {{#teachers}}
+			    {{#hasteacher}}
+			    
+			    <div class="item">
+				    <div class="media flex-column flex-md-row">
+					    {{^teacherimage}}
+					    <img class="profile mb-3 mb-md-0 mr-md-3 rounded mx-auto" src="{{{defaultimage}}}" alt="image"/>
+					    {{/teacherimage}}
+					    {{#teacherimage}}
+						<img class="profile mb-3 mb-md-0 mr-md-3 rounded mx-auto" src="{{{teacherimage}}}" alt="image"/>
+					    {{/teacherimage}}
+					    <div class="bio-holder media-body align-self-stretch text-center text-md-left p-0 p-md-2">
+						    {{#teachername}}
+						    <h4 class="title mt-1 mb-0">{{{teachername}}}</h4>
+						    {{/teachername}}
+						    {{#teachermeta}}
+						    <div class="meta">{{{teachermeta}}}</div>
+						    {{/teachermeta}}
+						    {{#teacherbio}}
+						    <div class="desc mt-2"> 
+							    {{{teacherbio}}}
+						    </div><!--//desc-->
+						    {{/teacherbio}}
+					    </div><!--//bio-holder-->
+				    </div><!--//quote-holder-->
+				    
+			    </div><!--//item-->
+			    {{/hasteacher}}
+			    {{/teachers}}
+		    </div><!--//teachers-carousel-->
+	    </div><!--//section-inner-->
+    </div><!--//container-fluid-->
+ </div><!--//teachers-section-->
+{{/useteachers}}

@@ -1,0 +1,39 @@
+<XMLDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PATH="local/course_details/db" VERSION="2020040900" COMMENT="XMLDB file for Moodle local/course_details" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+  <TABLES>
+    <TABLE NAME="local_course_custom_fields" COMMENT="course custom details">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" />
+        <FIELD NAME="cid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" />
+        <FIELD NAME="slider_img_1" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_title_1" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_desc_1" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_img_2" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_title_2" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_desc_2" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_img_3" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_title_3" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="slider_desc_3" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="course_about" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="sector_about" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="why_study" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="is_right_course" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="course_take_you" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="length" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="effort" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="mode" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="level" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="bulets_point_bg_img" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="bulets_point_text_1" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="bulets_point_text_2" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="dummy_fields_1" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="dummy_fields_2" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="dummy_fields_3" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="dummy_fields_4" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+        <FIELD NAME="dummy_fields_5" TYPE="text" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" /></KEYS>
+    </TABLE>
+
+  </TABLES>
+</XMLDB>

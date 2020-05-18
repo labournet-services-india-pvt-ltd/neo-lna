@@ -1,0 +1,308 @@
+<!-- page header / course name and image section--->
+
+<style>
+h1, h2, h3, h4, h5, h6 {
+font-weight:bold;
+}
+#page-local-course_details-index p {
+  font-size:18px;
+}
+#page-local-course_details-index li {
+  font-size:18px;
+}
+#page-local-course_details-index .text-primary {
+  color: #2f4487 !important;
+}
+
+#page-local-course_details-index .special-ul-opprtu ul li p {
+  margin-bottom:3px;
+}
+.carousel-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 66.6666666667%;
+    z-index: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #212529;
+    text-align: center;
+    background-color: #ffffffba;
+}
+.carousel-item-img{;
+	height:550px;
+	width:100%;
+}
+.firstoverley {
+  width: 80%;
+margin-left: 10%;
+margin-right: 10%;
+}
+.bullet-side-image {
+  min-height:550px;
+}
+.att-container {
+margin-top:100px;
+margin-bottom:100px;
+padding-top:20px;
+padding-bottom:20px;
+
+}
+.font-34 p {
+  font-size:34px !important;
+  font-weight:bold;
+}
+.font-24-b {
+  font-size:24px;
+  font-weight:bold;
+}
+#bulets_point_text_2 p {
+  line-height:1em;
+}
+#page-local-course_details-index .font-34 {
+  font-size:34px;
+}
+.course-back p {
+  color:#fff;
+}
+.padding-10 {
+  padding:5%;
+}
+.cshr {
+  text-align: center;
+width: 100px;
+color: #fff;
+background-color: #fff;
+height: 4px;
+}
+.cshr-black {
+  text-align: center;
+width: 100px;
+background-color: #000;
+height: 2px;
+}
+.arrow_icon_img{
+	width:50px;
+	margin:10px;
+}
+.title-icons{
+	width:55px;
+}
+.side-icons{
+	width:100%;
+}
+
+.font-20 span{
+  font-size:20px !important;
+}
+</style>
+
+<section>
+	<div class="container-fluid p-0 pt-5 pb-5" style="position:relative;">
+    	<div class="Parallax-div" style="background-image:url({{{course_image_url}}});"></div>
+        <div class="overlay-div bg-primary"></div>
+        <div class=" course-back container text-center pt-5 pb-5" style="position:relative;">
+        	<h1 class=" cdoverlay_heading font-34">{{{course_name}}}</h1>
+          <hr class="cshr">
+        	<p class=" cdoverlay_heading">{{{course_summary}}}</p>
+        </div>
+    </div>
+</section>
+
+<section>
+	<div class="container-fluid p-0">
+		<div id="demo" class="carousel slide" data-ride="carousel">
+		  <ul class="carousel-indicators">
+		    <li data-target="#demo" data-slide-to="0" class="active"></li>
+		    <li data-target="#demo" data-slide-to="1"></li>
+		    <li data-target="#demo" data-slide-to="2"></li>
+		  </ul>
+		  <div class="carousel-inner">
+		    <div class="carousel-item active text-center">
+		      <img src="{{{slider_img_1}}}" alt="" class="carousel-item-img">
+		      <div class="carousel-caption">
+		      	<div style="display:table;height: 100%;">
+			      	<div class="padding-10" style="display:table-cell;vertical-align: middle;">
+				        <h3 class="font-34">{{{slider_title_1}}}</h3>
+                <hr class="cshr-black">
+				        <p>{{{slider_desc_1}}}</p>
+			      	</div>
+		      	</div>
+		      </div>
+		    </div>
+		    <div class="carousel-item  text-center">
+		      <img src="{{{slider_img_2}}}" alt=""  class="carousel-item-img">
+		      <div class="carousel-caption">
+		        <div class="p-3" style="display:table;height: 100%;">
+			      	<div style="display:table-cell;vertical-align: middle;">
+				        <h3 class="font-34">{{{slider_title_2}}}</h3>
+                <hr class="cshr-black">
+				        <p>{{{slider_desc_2}}}</p>
+			      	</div>
+		      	</div>
+		      </div>
+		    </div>
+		    <div class="carousel-item  text-center">
+		      <img src="{{{slider_img_3}}}" alt="" class="carousel-item-img">
+		      <div class="carousel-caption">
+		        <div style="display:table;height: 100%;">
+			      	<div class="p-3" style="display:table-cell;vertical-align: middle;">
+				        <h3 class="font-34">{{{slider_title_3}}}</h3>
+                <hr class="cshr-black">
+				        <p>{{{slider_desc_3}}}</p>
+			      	</div>
+		      	</div>
+		      </div>
+		    </div>
+		  </div>
+		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		    <span class="carousel-control-prev-icon"></span>
+		  </a>
+		  <a class="carousel-control-next" href="#demo" data-slide="next">
+		    <span class="carousel-control-next-icon"></span>
+		  </a>
+		</div>
+	</div>
+</section>
+
+<section>
+
+	<div class="container-fluid">
+		<div class="row pt-5 pb-3">
+			<div class="col-md-8 pb-3">
+				<div class="col-md-12">
+					{{#course_about}}
+					<h2 class="text-primary"><img class="title-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/course_about_icon.png">{{#str}}course_about, local_course_details{{/str}}</h2>
+					<p>{{{course_about}}}</p>
+					{{/course_about}}
+				</div>
+				<div class="col-md-12">
+					{{#sector_about}}
+					<h2 class="text-primary"><img class="title-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/sector_about_icon.png">{{#str}}sector_about, local_course_details{{/str}}</h2>
+					<p>{{{sector_about}}}</p>
+					{{/sector_about}}
+				</div>
+				<div class="col-md-12">
+					{{#why_study}}
+					<h2 class="text-primary"><img class="title-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/why_study_icon.png">{{#str}}why_study, local_course_details{{/str}}</h2>
+					<p>{{{why_study}}}</p>
+					{{/why_study}}
+				</div>
+				<div class="col-md-12">
+					{{#is_right_course}}
+					<h2 class="text-primary"><img class="title-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/is_right_course_icon.png">{{#str}}is_right_course, local_course_details{{/str}}</h2>
+					<p>{{{is_right_course}}}</p>
+					{{/is_right_course}}
+				</div>
+				<div class="col-md-12 special-ul-opprtu">
+					{{#course_take_you}}
+					<h2 class="text-primary"><img class="title-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/course_take_you_icon.png">{{#str}}course_take_you, local_course_details{{/str}}</h2>
+					{{{course_take_you}}}
+					{{/course_take_you}}
+				</div>
+				<div class="col-md-12">
+					<h2 class="text-primary">{{#str}}career_path, local_course_details{{/str}}</h2>
+					{{#career_path}}
+          <div class="font-20">
+					       {{{career_path}}}
+          </div>
+					{{/career_path}}
+				</div>
+
+			</div>
+			<div class="col-md-4 side-column-new">
+        <div class="att-container container-fluid">
+
+        	<div class="col-md-12">
+        		<div class="row">
+	        		<div class="p-1" style="width:100px;">
+	        			<img class="side-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/Level-icon.png">
+	        		</div>
+	        		<div class="col pt-2">
+	        			{{#level}}
+						<h4 class="font-24-b">Level</h4>
+						<p>{{{level}}}</p>
+						{{/level}}
+	        		</div>
+        		</div>
+			</div>
+			<div class="col-md-12">
+				<div class="row">
+	        		<div class="p-1" style="width:100px;">
+	        			<img class="side-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/Mode-icon.png">
+	        		</div>
+	        		<div class="col pt-2">
+	        			{{#mode}}
+	        			<h4 class="font-24-b">Mode</h4>
+						<p>{{{mode}}}</p>
+						{{/mode}}
+	        		</div>
+        		</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="row">
+	        		<div class="p-1" style="width:100px;">
+	        			<img class="side-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/Length-icon.png">
+	        		</div>
+	        		<div class="col pt-2">
+	        			{{#length}}
+						<h4 class="font-24-b">Length</h4>
+						<p>{{{length}}}</p>
+						{{/length}}
+	        		</div>
+        		</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="row">
+	        		<div class="p-1" style="width:100px;">
+	        			<img class="side-icons" src="{{{ config.wwwroot }}}/local/course_details/pics/img-icons/Effort-icon.png">
+	        		</div>
+	        		<div class="col pt-2">
+						{{#effort}}
+						<h4 class="font-24-b">Effort</h4>
+						<p>{{{effort}}}</p>
+						{{/effort}}
+	        		</div>
+        		</div>
+			</div>
+
+
+
+
+      </div>
+
+				<div class=" abcd container-fluid p-0" style="position:relative;">
+		    		<img class="bullet-side-image" src="{{{bulets_point_bg_img}}}" style="width:100%;">
+		        	<div id="bulet_container" class=" text-center p-4" style="position: absolute;top: 0;bottom: 0;left: 0;width: 100%;" >
+		        		<div  class=" p-2 firstoverley" style="opacity: 0.71;background-color: rgb(47, 68, 135);color:#fff;border-radius: 50px;display: table;height: 100%;">
+		        			<div id="bulets_point_text_1" style="display: table-cell;vertical-align: middle;"><h3 class="font-34 cdoverlay_heading">{{{bulets_point_text_1}}}</h3></div>
+
+		        		</div>
+		        	</div>
+
+		        	<div id="bulet_container2" class="p-4 hide" style="position: absolute;top: 0;bottom: 0;left: 0;width: 100%; " >
+		        		<div  class=" p-2" style="opacity: 0.71;background-color: rgb(47, 68, 135);color:#fff;border-radius: 50px;display: table;height: 100%;">
+		        			<div  id="bulets_point_text_2"  style="display: table-cell;vertical-align: middle;">{{{bulets_point_text_2}}}</div>
+		        		</div>
+		        	</div>
+
+		    	</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<script>
+$(".abcd").hover(function(){
+    $('#bulet_container').hide();
+    $('#bulet_container2').show();
+},function(){
+    $('#bulet_container').show();
+    $('#bulet_container2').hide();
+});
+</script>

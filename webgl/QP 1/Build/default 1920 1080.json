@@ -1,0 +1,17 @@
+{
+"companyName": "Cups",
+"productName": "QP1 ",
+"productVersion": "1.0",
+"dataUrl": "default 1920 1080.data.unityweb",
+"wasmCodeUrl": "default 1920 1080.wasm.code.unityweb",
+"wasmFrameworkUrl": "default 1920 1080.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"backgroundUrl": "default 1920 1080.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.0f1"
+}

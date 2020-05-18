@@ -1,0 +1,75 @@
+.Parallax-div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+  	background-position: center;
+  	background-repeat: no-repeat;
+}
+
+.overlay-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.black-div{
+	color: #fff!important;
+    /*background-color: #000!important; */
+    background-color: #000!important;
+    opacity: 0.5;
+}
+
+.side-column  p{
+	line-height: 0.8;
+}
+
+.cdoverlay_heading {
+	color:#fff !important;
+}
+
+#page-local-course_details-index #page-header{
+	display:none !important;
+}
+@media (min-width: 768px){
+	.side-column{
+		border-left: 1px solid #c5c3c3;
+	}
+	.large-screen-show{
+		display: block !important;
+	}
+	.small-screen-show{
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+	.side-column{
+		border-left: 1px solid #c5c3c3;
+	}
+	.large-screen-show{
+		display: block !important;
+	}
+	.small-screen-show{
+		display: none !important;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.side-column{
+		border-top: 1px solid #c5c3c3;
+		padding-top: 15px;
+	}
+	.large-screen-show{
+		display: none !important;
+	}
+	.small-screen-show{
+		display: block !important;
+	}
+}
+

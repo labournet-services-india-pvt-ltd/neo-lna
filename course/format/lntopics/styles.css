@@ -1,0 +1,98 @@
+#page-course-view-lntopics .single-section .modtype_bootstrapelements {
+  display:none;
+}
+#page-course-view-lntopics .course-content .section-summary .summarytext
+{
+  margin-left:10px;
+}
+#page-course-view-lntopics .section .label .mod-indent-outer {
+  padding-left:4px;
+}
+.course-content ul.lntopics {
+    margin: 0;
+    list-style: none;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.course-content ul.lntopics li.section .content {
+    margin: 0 40px;
+}
+
+.course-content ul.lntopics li.section .left,
+.course-content ul.lntopics li.section .right {
+    width: 40px;
+    padding: 0 6px;
+}
+
+.course-content ul.lntopics li.section .left {
+    padding-top: 22px;
+    text-align: right;
+}
+
+.jsenabled .course-content ul.lntopics li.section .left,
+.jsenabled .course-content ul.lntopics li.section .right {
+    width: auto;
+}
+
+.course-content ul.lntopics li.section .left .section-handle img.icon {
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.course-content ul.lntopics li.section .section_action_menu .textmenu,
+.course-content ul.lntopics li.section .section_action_menu .menu-action-text {
+    white-space: nowrap;
+}
+
+.course-content .section-summary .section-title {
+background-color: #f7f7f7;
+min-height: 44px;
+padding: 10px;
+margin-top: 0px !important;
+}
+.course-content ul li.section.main {
+  border: 1px solid #ccc !important;
+  margin-top: 20px;
+margin-bottom: 20px;
+}
+.course-content ul.lntopics li.section .content {
+  margin:0px !important;
+}
+.course-content .section-summary .section-title {
+
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+
+}
+.single-section h3.sectionname {
+  padding: 12px 30px;
+  font-weight: bold;
+  color: #FFF;
+  background-color: #666666;
+
+}
+.course-content .single-section .section-navigation .mdl-left {
+  margin-bottom:1rem;
+}
+.course-content .single-section .section-navigation .mdl-right {
+  margin-bottom:1rem;
+}
+.course-content .single-section .summary {
+  padding-left:10px;
+}
+
+#page-course-view-lntopics .course-content .section-summary .section-summary-activities .ln-act-count {
+font-size:16px;
+color: #6c757d !important;
+}
+
+#page-course-view-lntopics .activityinstance {
+    padding: 5px 30px;
+    padding-right:200px;
+    color:#000;
+
+}
+#page-course-view-lntopics .mod-indent-outer :hover {
+  /* background: #ededed; */
+}

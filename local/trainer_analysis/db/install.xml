@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/trainer_analysis/db" VERSION="20190617" COMMENT="XMLDB file for Moodle local/trainer_analysis"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+<TABLE NAME="local_trainer_liveclasstime" COMMENT="trainer congreatime">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" />
+<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="sessionid" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="starttime" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="endtime" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="duration" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="presentpercent" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="userrole" TYPE="chat" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" />
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id" />
+</KEYS>
+</TABLE>
+</XMLDB>

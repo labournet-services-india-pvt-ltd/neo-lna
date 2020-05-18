@@ -1,0 +1,9 @@
+.trainer-analysis i {
+font-size: 60px;
+}
+#topfivetrainer td {
+	text-align: center !important;
+}
+#toplogtrainer td {
+	text-align: center !important;
+}

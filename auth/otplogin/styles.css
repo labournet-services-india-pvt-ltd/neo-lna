@@ -1,0 +1,79 @@
+#login {
+    padding-top: 50px
+}
+#login .form-wrap {
+    width: 30%;
+    margin: 0 auto;
+}
+#login h1 {
+    color: #1fa67b;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+#login .form-group {
+    margin-bottom: 25px;
+}
+#login .checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+@font-face {
+    font-family: 'googleoauth2-icomoon';
+    src:url('fonts/googleoauth2-icomoon.eot.eot?mmc5kc');
+    src:url('fonts/googleoauth2-icomoon.eot?mmc5kc#iefix') format('embedded-opentype'),
+        url('fonts/googleoauth2-icomoon.ttf?mmc5kc') format('truetype'),
+        url('fonts/googleoauth2-icomoon.woff?mmc5kc') format('woff'),
+        url('fonts/googleoauth2-icomoon.svg?mmc5kc#googleoauth2-icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.otp-button::before {
+    background-color: rgba(0, 0, 0, 0.15);
+    margin: -7px 10px -7px -7px;
+    padding: 7px;
+    text-indent: 0;
+    vertical-align: bottom;
+    font-size: 22px;
+    position: relative;
+    top: 0;
+    display: inline-block;
+    font-family: "googleoauth2-icomoon";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    min-width: 24px;
+    line-height: 1;
+    text-align: center;
+}
+.otp-button {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    background: #ccc;
+    display: inline-block;
+    text-align: center;
+    min-width: 185px;
+    color: #fff;
+    padding: 7px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+    transition: background-color 0.15s;
+}
+
+.otp-button.otp {
+    background-color: #3b5998;
+}
+.otp-button.otp:hover {
+    background-color: white;
+    text-decoration: none;
+
+}
+.loginbox .loginform .form-input input {
+    width: 12em !important; 
+  }
