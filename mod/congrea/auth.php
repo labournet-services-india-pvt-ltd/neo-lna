@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die;
  *
  * @return string $resutl json_encoded object
  */
-function congrea_curl_request($url, $postdata, $key, $secret) {
+function old_congrea_curl_request($url, $postdata, $key, $secret) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, 1);

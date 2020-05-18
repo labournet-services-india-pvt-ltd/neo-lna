@@ -139,15 +139,29 @@ if($myreport){
 //	$syncdate = strtotime("today-1day");
 	$syncdate = strtotime($syncdate1);
 
+	echo '<hr>';
+	echo '<h3> Select a date to Sync the data first. </h3>';
 
-	$todayurl = new moodle_url($CFG->wwwwroot.'/local/trainer_analysis/index.php?date='.$syncdate);
+$cformaction1 = $CFG->wwwwroot.'/local/trainer_analysis/sessioncurl.php';
+$cform1 = '<form action="'.$cformaction1.'">
+	<label for="date">Select Date:</label>
+	<input type="date" id="date" name="date">
+	<input type="submit" value="Submit">
+</form>';
+
+	echo $cform1;
+	echo '<hr>';
+	echo '<br>';
+
+
+	$todayurl = new moodle_url($CFG->wwwwroot.'/local/trainer_analysis/newrpt.php?date='.$syncdate);
 	$button = '<a class="btn btn-primary" href="'.$todayurl.'">'.'Click to View report to Today'.'</a>';
 	//echo $button;
 
 	echo '<hr>';
-	echo '<h3> Select a date to see the Trainer Report. </h3>';
+	echo '<h3> Select a date to see the Report. </h3>';
 
-$cformaction = $CFG->wwwwroot.'/local/trainer_analysis/index.php';
+$cformaction = $CFG->wwwwroot.'/local/trainer_analysis/newrpt.php';
 $cform = '<form action="'.$cformaction.'">
   <label for="date">Select Date:</label>
   <input type="date" id="date" name="date">
@@ -165,19 +179,19 @@ $cform = '<form action="'.$cformaction.'">
 		'Si.',
 		'Center',
 		'Client',
-		get_string('courses', 'local_trainer_analysis'),
+		'Course Name',
 		get_string('batch','local_trainer_analysis'),
-		get_string('trainername', 'local_trainer_analysis'),
+		'Name',
 
 	//	get_string('email'),
 
 	//	get_string('shortname'),
-	//	get_string('role'),
+		get_string('role'),
 
 		get_string('liveclassname','local_trainer_analysis'),
-		get_string('starttime','local_trainer_analysis'),
+		'Start Time',
 	//	get_string('lastsessdate','local_trainer_analysis'),
-		get_string('endtime','local_trainer_analysis'),
+		'End time',
 		get_string('timespent','local_trainer_analysis'),
 		get_string('countstudentingroup','local_trainer_analysis'),
 		get_string('recordinglink','local_trainer_analysis'),
@@ -189,20 +203,15 @@ $cform = '<form action="'.$cformaction.'">
 	$si = 0;
 
 	$trainers = $DB->get_records_sql($sql);
-	foreach ($trainers as $trainer) {
-		$userid =$trainer->userid;
-		$user = $DB->get_record('user',array('id'=>$userid));
-		$profilelink = new moodle_url($CFG->wwwroot.'/user/profile.php?id='.$userid);
-		$username = '<a href="'.$profilelink.'">'.$user->firstname.' '.$user->lastname.'</a>';
-		$useremail = $user->email;
-		$trainerrole = $user->icq;
+
+
 		$traintimevalue = 0;
 		//get timespend data table local table
 		//echo $syncdate;
 		if (!empty($syncdate)) {
 			//get only todays data
-			$gettimesql = "Select * from {local_trainer_liveclasstime} where userid= $userid and starttime > $syncdate";
-			//$gettimesql = "Select * from {local_trainer_liveclasstime} where starttime > $syncdate";
+			//$gettimesql = "Select * from {local_trainer_liveclasstime} where userid= $userid and starttime > $syncdate";
+			$gettimesql = "Select * from {local_trainer_liveclasstime} where starttime > $syncdate";
 			//$gettimesql = "Select * from {local_trainer_liveclasstime} where userid= ? and starttime = ?";
 			$gettimedata = $DB->get_records_sql($gettimesql);
 			//$gettimedata = $DB->get_records_sql($gettimesql, array($userid,$syncdate));
@@ -213,6 +222,14 @@ $cform = '<form action="'.$cformaction.'">
 
 		if (!empty($gettimedata)) {
 			foreach ($gettimedata as $getval) {
+
+
+				$userid =$getval->userid;
+				$user = $DB->get_record('user',array('id'=>$userid));
+				$profilelink = new moodle_url($CFG->wwwroot.'/user/profile.php?id='.$userid);
+				$username = '<a href="'.$profilelink.'">'.$user->firstname.' '.$user->lastname.'</a>';
+				$useremail = $user->email;
+				$trainerrole = $user->icq;
 
 				$cmhere = $DB->get_record('course_modules', array('id'=>$getval->cmid));
 
@@ -239,10 +256,13 @@ $cform = '<form action="'.$cformaction.'">
 
 				//https://skills.labournet.in/mod/congrea/view.php?id=1521&psession=133
 				$recordinglink = '';
+
+				$studentattendancelink = '';
+
+
 				$recordinglink1 = new moodle_url($CFG->wwwroot.'/mod/congrea/view.php?id='.$getval->cmid.'&psession='.$congrea->id);
 				$recordinglink = '<a href="'.$recordinglink1.'">Recording</a>';
 
-				$studentattendancelink = '';
 				//https://skills.labournet.in/mod/congrea/view.php?id=949&psession=1&session=6dac7fb9-7898-4b5b-baec-5fd2872973ed
 				//$studentattendancelink1 = new moodle_url($CFG->wwwroot.'/mod/congrea/view.php?id='.$getval->cmid.'&psession=1&session='.$getval->sessionid);
 
@@ -275,7 +295,7 @@ $cform = '<form action="'.$cformaction.'">
 								$groupname,
 								$username,
 				//				$useremail,
-				//				$trainerrole,
+								$trainerrole,
 								$cmname,
 							$trainlastsessiondate,
 							$trainlastsessionenddate,
@@ -294,12 +314,28 @@ $cform = '<form action="'.$cformaction.'">
 					$trainlastsessiondate = '';
 					$trainlastsessionenddate = '';
 					$countgroupmembers = '';
-				//	$table->data[] = array($username,$useremail,$clink,$trainerrole,$groupname,$cmname,
-			//		$trainlastsessiondate,$trainlastsessionenddate,$traintimevalue,
-		//			$countcoursemembers,$countgroupmembers,$recordinglink,$studentattendancelink);
+					$si = $si + 1;
+					$table->data[] = array(
+						$si,
+						'-',
+						'-',
+						$clink,
+						$groupname,
+						$username,
+		//				$useremail,
+		//				$trainerrole,
+						$cmname,
+					$trainlastsessiondate,
+					$trainlastsessionenddate,
+					$traintimevalue,
+					$countgroupmembers,
+					$recordinglink,
+					$studentattendancelink
+
+				);
 
 		}
-	} // end of for each trainer
+
 
 
 	$datatable='';

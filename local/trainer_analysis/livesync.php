@@ -60,14 +60,25 @@ $syncdate = optional_param('date', 0, PARAM_INT); // Course_module ID.
 
 	$sql = "SELECT DISTINCT userid FROM {role_assignments} WHERE roleid = 3";
 	$trainers = $DB->get_records_sql($sql);
+
+	//get teachers of this course only
+
+/*
+
+
 	foreach ($trainers as $trainer) {
 		$userid =$trainer->userid;
 		$user = $DB->get_record('user',array('id'=>$userid));
 		$cdetails = get_trainer_courses($userid);
-		foreach ($cdetails as $value) {
-			echo 'checking for course'.$value.'and trainer'.$trainer->userid; 
-			if ($value >= $value1 and $value <= $value2) {
 
+		foreach ($cdetails as $value) {
+			echo '</br>';
+			echo 'checking for course'.$value.'and trainer'.$trainer->userid;
+			echo '</br>';
+
+			if ($value >= $value1 and $value <= $value2) {
+				echo 'Syncing the data for -'.$value;
+				// echo '</br>';
 				$coursevalue = $value;
 				$checkcourse = $DB->get_record('course', array('id' => $coursevalue));
 				$modinfo = get_fast_modinfo($checkcourse);
@@ -80,6 +91,8 @@ $syncdate = optional_param('date', 0, PARAM_INT); // Course_module ID.
 														$groupid = $condition['id'];
 														$getgroups = $DB->get_records('groups_members', array('userid' => $userid, 'groupid' => $groupid));
 														if (!empty($getgroups)) {
+															 echo $checkcourse->id.'---'.$userid;
+															 echo '<br>';
 																$trainercongreatime[] = get_congrea_details_trainer_todb($checkcourse,$cm,$userid,$syncdate);
 														}
 													}
@@ -89,7 +102,9 @@ $syncdate = optional_param('date', 0, PARAM_INT); // Course_module ID.
 					}
 			} //if clasuse
 
+
 		}
+
 
 	} // end of for each trainer
 
@@ -99,3 +114,42 @@ $syncdate = optional_param('date', 0, PARAM_INT); // Course_module ID.
 /********************* END OF OLD CODE *********************/
 
 //
+echo 'abcd';
+$syncdate1 = '2020-05-11';
+$syncdate = strtotime($syncdate1);
+
+//$value = 47;
+//get all courses of LNACAD
+global $DB;
+$concourses = $DB->get_records('congrea');
+foreach($concourses as $syntocourse) {
+	//$coursevalue = $value;
+$coursevalue = $syntocourse->course;
+$modid = $syntocourse->id;
+$modval = 23;
+
+$checkcourse = $DB->get_record('course', array('id' => $coursevalue));
+//get cmid
+$value = $checkcourse->id;
+if ($value >= $value1 and $value <= $value2) {
+	$getcmid = $DB->get_record('course_modules', array('course' => $coursevalue, 'module' => $modval, 'instance' => $modid));
+
+	if(!empty($getcmid)) {
+		$cm = $getcmid;
+
+		$trainercongreatime[] = get_congrea_details_trainer_todb_again($checkcourse,$cm,'',$syncdate);
+	}
+
+}
+
+// $modinfo = get_fast_modinfo($checkcourse);
+// 	foreach ($modinfo->get_instances_of('congrea') as $mgid => $cm) {
+//
+// 		$trainercongreatime[] = get_congrea_details_trainer_todb_again($checkcourse,$cm,'',$syncdate);
+//
+//
+// 	}
+
+
+
+}

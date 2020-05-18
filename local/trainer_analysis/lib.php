@@ -112,7 +112,29 @@ function get_trainer_courses($userid){
 	}
 	return $returnarray;
 }
+//manju:this function will returns the courses of a trainer.
+function get_stuent_courses($userid){
+	global $DB,$CFG;
+	$returnarray=[];
+	$sql="SELECT c.id AS courseid, c.fullname, c.shortname
+	FROM {course} AS c
+	JOIN {context} AS ctx ON c.id = ctx.instanceid AND ctx.contextlevel = 50
+	JOIN {role_assignments} AS ra ON ra.contextid = ctx.id
+	JOIN {user} AS u ON u.id = ra.userid
+	WHERE  ra.roleid = 5 AND ra.userid = $userid
+	AND c.visible = 1 AND c.id !=34";
+	$trainercourse = $DB->get_record_sql($sql);
+	// foreach ($trainercourse as $course) {
+	// 	$returnarray=$course->fullname;
+	// }
+if ($trainercourse) {
+		$returnarrayfullname=$trainercourse->fullname;
+		$returnarraycode=$trainercourse->shortname;
+return $returnarray = array('fullname' => $returnarrayfullname, 'cscode' => $returnarraycode);
+}
+return '';
 
+}
 /** get students in a course */
 /* input is course id  returns just the count */
 function get_studentlist_course($courseid){
@@ -189,6 +211,8 @@ function get_congrea_details_trainer($course,$cm, $trainerid) {
 	rsort($recording->Items);
 	$sessiondate = [];
 	foreach ($recording->Items as $record) {
+
+
 		$vcsid = $record->key_room;
 		$session = $record->session;
 	//	echo $lastsessiontime;
@@ -248,7 +272,7 @@ function get_congrea_details_trainer($course,$cm, $trainerid) {
 }
 
 /* to get congrea details based on cm  this stores results in DB */
-function get_congrea_details_trainer_todb($course,$cm, $trainerid,$syncdate) {
+function get_congrea_details_trainer_todb($course,$cm, $trainerid=null,$syncdate=null) {
 	global $CFG,$DB, $USER;
 	require_once($CFG->dirroot.'/mod/congrea/lib.php');
 	require_once($CFG->dirroot.'/mod/congrea/locallib.php');
@@ -282,18 +306,32 @@ function get_congrea_details_trainer_todb($course,$cm, $trainerid,$syncdate) {
 	}
 	$timespent = 0; // initialising
 	rsort($recording->Items);
+
 	foreach ($recording->Items as $record) {
+
+		$lastsession = $record->time;
+
+		if ( $lastsession > $syncdate) {
+
+
+		print_object($record->time);
+		print_object($record->session);
+
 		$vcsid = $record->key_room;
 		$session = $record->session;
 	//	echo $lastsessiontime;
 		$apiurl = 'https://api.congrea.net/t/analytics/attendance';
     $data = attendence_curl_request($apiurl, $session, $key, $authpassword, $authusername, $room,false); // TODO.
     $attendencestatus = json_decode($data);
+
 		$sessionstatus = get_total_session_time($attendencestatus->attendance); // Session time.
 		if (!empty($attendencestatus) and ! empty($sessionstatus)) {
 			// session date
 				$sessiondate = userdate($record->time / 1000); // Todo. this is an array and we should return only the last date so far.
         foreach ($attendencestatus->attendance as $sattendence) {
+
+				print_object($sattendence);
+				die();
 				//	$studentname = $DB->get_record('user', array('id' => $sattendence->uid));
 				//echo $syncdate;
 
@@ -334,19 +372,22 @@ function get_congrea_details_trainer_todb($course,$cm, $trainerid,$syncdate) {
 						$recordinsert->presentpercent = $presence;
 						$recordinsert->timecreated = time();
 
-						$recordinsert->userrole = '';
-						if ($sattendence->uid == $trainerid) {
-							$recordinsert->userrole = 'Trainer';
-						} else {
-							$recordinsert->userrole = 'Student';
-						}
+						$getudata = $DB->get_record('user', array('id'=>$sattendence->uid));
+
+						$recordinsert->userrole = $getudata->icq;
+
+						// if ($sattendence->uid == $trainerid) {
+						// 	$recordinsert->userrole = 'Trainer';
+						// } else {
+						// 	$recordinsert->userrole = 'Student';
+						// }
 
 						// first check if the record is present or not
 						//$studentsstatus->starttime
 						//$studentsstatus->endtime
 
 						$checkrecord = $DB->get_record('local_trainer_liveclasstime',
-							array('userid'=>$sattendence->uid, 'cmid'=>$cm->id, 'starttime' =>$studentsstatus->sessionstarttime ));
+							array('userid'=>$sattendence->uid, 'cmid'=>$cm->id, 'starttime' =>$studentsstatus->starttime ));
 						if (!empty($checkrecord)) { // record is already present
 							global $DB;
 							$upduser = new stdClass();
@@ -370,9 +411,320 @@ function get_congrea_details_trainer_todb($course,$cm, $trainerid,$syncdate) {
 					} // if of present
 				} // foreach
 			} // end of if attendaencestatus
+
+} // syncdate
+
 	}
 
 	return true;
+	//return $timespent;
+
+}
+
+/* to get congrea details based on cm  this stores results in DB */
+function get_congrea_details_trainer_todb_again($course,$cm, $trainerid=null,$syncdate=null) {
+	global $CFG,$DB, $USER;
+	require_once($CFG->dirroot.'/mod/congrea/lib.php');
+	require_once($CFG->dirroot.'/mod/congrea/locallib.php');
+	//require_once($CFG->dirroot.'/mod/congrea/auth.php');
+
+	// we will send cm name from here..
+	$cmname = $cm->name;
+
+	$congrea = $DB->get_record('congrea', array('id' => $cm->instance), '*', MUST_EXIST);
+	$key = get_config('mod_congrea', 'cgapi');
+	$secret = get_config('mod_congrea', 'cgsecretpassword');
+	$cgapi = get_config('mod_congrea', 'cgapi');
+	$cgsecret = get_config('mod_congrea', 'cgsecretpassword');
+	$recordingstatus = true;
+	$role = 't'; // this is very important Mihir
+	 if (strlen($cgsecret) >= 64 && strlen($cgapi) > 32) {
+	 		require_once($CFG->dirroot.'/mod/congrea/auth.php');
+	 }
+	 $fromcms = true; // Identify congrea is from cms.
+	// Get congrea api key and Secret key from congrea setting.
+
+	$context = context_module::instance($cm->id);
+	has_capability('mod/congrea:attendance', $context);
+
+	$room = !empty($course->id) && !empty($cm->id) ? $course->id . '_' . $cm->id : 0;
+	$postdata = json_encode(array('room' => $room));
+	$result = curl_request("https://api.congrea.net/backend/recordings", $postdata, $key, $secret);
+	if (!empty($result)) {
+	    $data1 = json_decode($result);
+	    $recording = json_decode($data1->data);
+	}
+	$timespent = 0; // initialising
+	rsort($recording->Items);
+
+	foreach ($recording->Items as $record) {
+
+		$lastsession = $record->time;
+
+		if ( $lastsession > $syncdate) {
+
+
+		$vcsid = $record->key_room;
+		$session = $record->session;
+
+		echo $course->id.$session;echo '<br>';
+	//	echo $lastsessiontime;
+
+	// $authdata = get_auth_data($cgapi, $cgsecret, $recordingstatus, $course, $cm, $role);
+	// $apiurl = 'https://api.congrea.net/t/analytics/attendance';
+	// $attendancedata = attendence_curl_request($apiurl, $session, $key, $authdata->authpass, $authdata->authuser, $authdata->room);
+	// $attendencestatus = json_decode($attendancedata);
+	//
+	// $apiurl2 = 'https://api.congrea.net/t/analytics/attendancerecording';
+	// $recordingdata = attendence_curl_request($apiurl2, $session, $key, $authdata->authpass, $authdata->authuser, $authdata->room);
+	// $recordingattendance = json_decode($recordingdata, true);
+	// $sessionstatus = get_total_session_time($attendencestatus->attendance); // Session time.
+
+
+		$apiurl = 'https://api.congrea.net/t/analytics/attendance';
+    $data = attendence_curl_request($apiurl, $session, $key, $authpassword, $authusername, $room,false); // TODO.
+    $attendencestatus = json_decode($data);
+
+		$sessionstatus = get_total_session_time($attendencestatus->attendance); // Session time.
+		if (!empty($attendencestatus) and ! empty($sessionstatus)) {
+			// session date
+				$sessiondate = userdate($record->time / 1000); // Todo. this is an array and we should return only the last date so far.
+        foreach ($attendencestatus->attendance as $sattendence) {
+
+
+
+				//	$studentname = $DB->get_record('user', array('id' => $sattendence->uid));
+				//echo $syncdate;
+
+/*
+				 if ($syncdate >= $sessionstatus->sessionstarttime  ) { // sync only todays sessions
+				 	continue;
+				 }
+*/
+						$connect = json_decode($sattendence->connect);
+						$disconnect = json_decode($sattendence->disconnect);
+						$studentsstatus = calctime($connect, $disconnect, $sessionstatus->sessionstarttime, $sessionstatus->sessionendtime);
+
+
+					//if ($sattendence->uid == $trainerid) {
+					if (!empty($studentsstatus->totalspenttime)) { // this means user was present
+
+						if (!empty($studentsstatus->totalspenttime) and $sessionstatus->totalsessiontime >= $studentsstatus->totalspenttime) {
+							$timespent =  $studentsstatus->totalspenttime;
+							$presence = ($studentsstatus->totalspenttime * 100) / $sessionstatus->totalsessiontime;
+
+						}else if ($studentsstatus->totalspenttime > $sessionstatus->totalsessiontime) {
+								$timespent =  $studentsstatus->totalspenttime;
+								$presence = 100; // Special case handle.
+						} else {
+								$timespent =  $studentsstatus->totalspenttime;
+								$presence = '0';
+						}
+
+						// write code to insert record in db
+						global $DB;
+						$recordinsert = new stdClass();
+						$recordinsert->userid = $sattendence->uid;
+						$recordinsert->cmid = $cm->id;
+						$recordinsert->sessionid = $session;
+						$recordinsert->starttime = $studentsstatus->starttime; // this should studentstatus
+						$recordinsert->endtime = $studentsstatus->endtime; //// this should studentstatus
+						$recordinsert->duration = $timespent;
+						$recordinsert->presentpercent = $presence;
+						$recordinsert->timecreated = time();
+
+						$getudata = $DB->get_record('user', array('id'=>$sattendence->uid));
+
+						$recordinsert->userrole = $getudata->icq;
+
+						// if ($sattendence->uid == $trainerid) {
+						// 	$recordinsert->userrole = 'Trainer';
+						// } else {
+						// 	$recordinsert->userrole = 'Student';
+						// }
+
+						// first check if the record is present or not
+						//$studentsstatus->starttime
+						//$studentsstatus->endtime
+
+						$checkrecord = $DB->get_record('local_trainer_liveclasstime',
+							array('userid'=>$sattendence->uid, 'cmid'=>$cm->id, 'starttime' =>$studentsstatus->starttime ));
+						if (!empty($checkrecord)) { // record is already present
+							global $DB;
+							$upduser = new stdClass();
+							$upduser->id = $checkrecord->id;
+							$upduser->cmid = $cm->id;
+							$upduser->userid = $sattendence->uid;
+							$upduser->sessionid = $session;
+							$upduser->starttime = $studentsstatus->starttime;
+							$upduser->endtime = $studentsstatus->endtime;
+							$upduser->userrole = $recordinsert->userrole;
+							$DB->update_record('local_trainer_liveclasstime', $upduser);
+							echo 'updated for'.$sattendence->uid.'-'.$cm->id;
+
+						} else {
+							$insert = $DB->insert_record('local_trainer_liveclasstime', $recordinsert);
+							if($insert) {
+								echo 'inserted for'.$sattendence->uid.'-'.$cm->id;
+							}
+						}
+
+					} // if of present
+				} // foreach
+			} // end of if attendaencestatus
+
+} // syncdate
+
+	}
+
+	return true;
+	//return $timespent;
+
+}
+
+
+
+/* to get congrea details based on cm  this stores results in DB */
+function get_congrea_details_trainer_todb_again_session($course,$cm, $session, $trainerid=null,$syncdate=null) {
+	global $CFG,$DB, $USER;
+	require_once($CFG->dirroot.'/mod/congrea/lib.php');
+	require_once($CFG->dirroot.'/mod/congrea/locallib.php');
+	//require_once($CFG->dirroot.'/mod/congrea/auth.php');
+
+$text = ' ';
+	// we will send cm name from here..
+	$cmname = $cm->name;
+
+	$congrea = $DB->get_record('congrea', array('id' => $cm->instance), '*', MUST_EXIST);
+	$key = get_config('mod_congrea', 'cgapi');
+	$secret = get_config('mod_congrea', 'cgsecretpassword');
+	$cgapi = get_config('mod_congrea', 'cgapi');
+	$cgsecret = get_config('mod_congrea', 'cgsecretpassword');
+	$recordingstatus = true;
+	$role = 't'; // this is very important Mihir
+	 if (strlen($cgsecret) >= 64 && strlen($cgapi) > 32) {
+	 		require_once($CFG->dirroot.'/mod/congrea/auth.php');
+	 }
+	 $fromcms = true; // Identify congrea is from cms.
+	// Get congrea api key and Secret key from congrea setting.
+
+	$context = context_module::instance($cm->id);
+	has_capability('mod/congrea:attendance', $context);
+
+	$room = !empty($course->id) && !empty($cm->id) ? $course->id . '_' . $cm->id : 0;
+
+	//	echo $lastsessiontime;
+
+	// $authdata = get_auth_data($cgapi, $cgsecret, $recordingstatus, $course, $cm, $role);
+	// $apiurl = 'https://api.congrea.net/t/analytics/attendance';
+	// $attendancedata = attendence_curl_request($apiurl, $session, $key, $authdata->authpass, $authdata->authuser, $authdata->room);
+	// $attendencestatus = json_decode($attendancedata);
+	//
+	// $apiurl2 = 'https://api.congrea.net/t/analytics/attendancerecording';
+	// $recordingdata = attendence_curl_request($apiurl2, $session, $key, $authdata->authpass, $authdata->authuser, $authdata->room);
+	// $recordingattendance = json_decode($recordingdata, true);
+	// $sessionstatus = get_total_session_time($attendencestatus->attendance); // Session time.
+
+
+		$apiurl = 'https://api.congrea.net/t/analytics/attendance';
+    $data = attendence_curl_request($apiurl, $session, $key, $authpassword, $authusername, $room,false); // TODO.
+    $attendencestatus = json_decode($data);
+
+
+
+		$sessionstatus = get_total_session_time($attendencestatus->attendance); // Session time.
+		if (!empty($attendencestatus) and ! empty($sessionstatus)) {
+			// session date
+				$sessiondate = userdate($record->time / 1000); // Todo. this is an array and we should return only the last date so far.
+        foreach ($attendencestatus->attendance as $sattendence) {
+
+
+
+				//	$studentname = $DB->get_record('user', array('id' => $sattendence->uid));
+				//echo $syncdate;
+
+/*
+				 if ($syncdate >= $sessionstatus->sessionstarttime  ) { // sync only todays sessions
+				 	continue;
+				 }
+*/
+						$connect = json_decode($sattendence->connect);
+						$disconnect = json_decode($sattendence->disconnect);
+						$studentsstatus = calctime($connect, $disconnect, $sessionstatus->sessionstarttime, $sessionstatus->sessionendtime);
+
+
+					//if ($sattendence->uid == $trainerid) {
+					if (!empty($studentsstatus->totalspenttime)) { // this means user was present
+
+						if (!empty($studentsstatus->totalspenttime) and $sessionstatus->totalsessiontime >= $studentsstatus->totalspenttime) {
+							$timespent =  $studentsstatus->totalspenttime;
+							$presence = ($studentsstatus->totalspenttime * 100) / $sessionstatus->totalsessiontime;
+
+						}else if ($studentsstatus->totalspenttime > $sessionstatus->totalsessiontime) {
+								$timespent =  $studentsstatus->totalspenttime;
+								$presence = 100; // Special case handle.
+						} else {
+								$timespent =  $studentsstatus->totalspenttime;
+								$presence = '0';
+						}
+
+						// write code to insert record in db
+						global $DB;
+						$recordinsert = new stdClass();
+						$recordinsert->userid = $sattendence->uid;
+						$recordinsert->cmid = $cm->id;
+						$recordinsert->sessionid = $session;
+						$recordinsert->starttime = $studentsstatus->starttime; // this should studentstatus
+						$recordinsert->endtime = $studentsstatus->endtime; //// this should studentstatus
+						$recordinsert->duration = $timespent;
+						$recordinsert->presentpercent = $presence;
+						$recordinsert->timecreated = time();
+
+						$getudata = $DB->get_record('user', array('id'=>$sattendence->uid));
+
+						$recordinsert->userrole = $getudata->icq;
+
+						// if ($sattendence->uid == $trainerid) {
+						// 	$recordinsert->userrole = 'Trainer';
+						// } else {
+						// 	$recordinsert->userrole = 'Student';
+						// }
+
+						// first check if the record is present or not
+						//$studentsstatus->starttime
+						//$studentsstatus->endtime
+
+						$checkrecord = $DB->get_record('local_trainer_liveclasstime',
+							array('userid'=>$sattendence->uid, 'cmid'=>$cm->id, 'starttime' =>$studentsstatus->starttime ));
+						if (!empty($checkrecord)) { // record is already present
+							global $DB;
+							$upduser = new stdClass();
+							$upduser->id = $checkrecord->id;
+							$upduser->cmid = $cm->id;
+							$upduser->userid = $sattendence->uid;
+							$upduser->sessionid = $session;
+							$upduser->starttime = $studentsstatus->starttime;
+							$upduser->endtime = $studentsstatus->endtime;
+							$upduser->userrole = $recordinsert->userrole;
+							$DB->update_record('local_trainer_liveclasstime', $upduser);
+							echo 'updated for'.$sattendence->uid.'-'.$cm->id;
+							echo '<br>';
+							$text = 'Sync completed successfully';
+
+						} else {
+							$insert = $DB->insert_record('local_trainer_liveclasstime', $recordinsert);
+							if($insert) {
+								echo 'inserted for'.$sattendence->uid.'-'.$cm->id;
+								echo '<br>';
+								$text = 'Sync completed successfully';
+							}
+						}
+
+					} // if of present
+				} // foreach
+			} // end of if attendaencestatus
+
+	return $text;
 	//return $timespent;
 
 }

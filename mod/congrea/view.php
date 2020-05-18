@@ -526,6 +526,35 @@ if ($psession) {
                 array('title' => get_string('viewreport', 'congrea'), 'target' => '_blank')
             );
             $row[] = $attendancereport;
+
+            //add a sync button - Mihir
+            $returnurlsync = new moodle_url('/local/trainer_analysis/sessionsync.php', array('cmid' => $cm->id, 'session' => $record->session, 'psession' => true));
+            $syncbutton = "<a href='$returnurlsync' target='_blank'> Sync now </a>";
+            $row[] = $syncbutton;
+
+
+            // write code to insert record in db
+            global $DB,$CFG;
+            $sessionurl = $CFG->wwwroot.'/local/trainer_analysis/sessionsync.php?cmid='.$cm->id.'&session='.$record->session.'&psession='.true;
+            $checkrecord = $DB->get_record('liveclass_session', array('cm'=>$cm->id, 'session' =>$record->session ));
+						if (!empty($checkrecord)) { // record is already present
+
+            } else {
+              $recordinsert = new stdClass();
+              $recordinsert->course = $cm->course;
+              $recordinsert->cm = $cm->id;
+              $recordinsert->session = $record->session;
+              $recordinsert->sessiondate = $record->time; // this should studentstatus
+              $recordinsert->sessionurl = $sessionurl; // this should studentstatus
+              $recordinsert->syncdate = ''; //// this should studentstatus
+              $recordinsert->syncflag = 0;
+              $insert = $DB->insert_record('liveclass_session', $recordinsert);
+            }
+
+            //end mihir url storage
+
+
+
         }
         if (has_capability('mod/congrea:playrecording', $context)) {
             $buttons[] = congrea_online_server_play(
