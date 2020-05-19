@@ -80,8 +80,9 @@ $.getScript("{{{ config.wwwroot }}}/theme/maker/plugins/owlcarousel/owl.carousel
         rtl: true,
         {{/usertl}}
         margin:30,
-        //dots:false,
-        nav:true,
+        singleItem:true,
+        dots:true,
+        nav:false,
         {{#hasinternet}}
         navText: ['<i class="material-icons">&#xE314;</i>', '<i class="material-icons">&#xE315;</i>'],
         {{/hasinternet}}
@@ -93,10 +94,10 @@ $.getScript("{{{ config.wwwroot }}}/theme/maker/plugins/owlcarousel/owl.carousel
 	            items:1,
 	        },
 	        768:{
-	            items:2,
+	            items:1,
 	        },
 	        992: {
-		        items:3,
+		        items:1,
 	        }
 	    }
 

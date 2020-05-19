@@ -36,26 +36,26 @@
             </ul>
         </div>
         <div class="hero-slider-mask"></div>
-    </div><!--//hero-slider-wrapper--> 
-    <div class="container hero-content">     
-	    {{#hasheroheadline}}           
-        <h2 class="headline">{{{heroheadline}}}</h2>
-        {{/hasheroheadline}} 
-        {{#hasherosummary}} 
-        <div class="tagline">{{{herosummary}}}</div>
-        {{/hasherosummary}} 
-        
+    </div><!--//hero-slider-wrapper-->
+    <div class="container hero-content">
+	    {{#hasheroheadline}}
+        <h2 class="count-section-title primary-text-color ">{{{heroheadline}}}</h2>
+        {{/hasheroheadline}}
+        {{#hasherosummary}}
+        <div class="carousal-secondary-text dark-text-color">{{{herosummary}}}</div>
+        {{/hasherosummary}}
+
         <div class="actions">
-	        {{#hasheroctabtn}} 
-            <a class="btn theme-btn-cta theme-btn-primary" href="{{{herourl}}}"  {{#urlopennew}}target="_blank"{{/urlopennew}}>{{{herocta}}}</a>  
-            {{/hasheroctabtn}} 
-            {{#useherovideo}} 
+	        {{#hasheroctabtn}}
+            <a class="btn theme-btn-cta btn-custom-primary" href="{{{herourl}}}"  {{#urlopennew}}target="_blank"{{/urlopennew}}>{{{herocta}}}</a>
+            {{/hasheroctabtn}}
+            {{#useherovideo}}
             <a href="#" class="play-trigger" data-toggle="modal" data-target="#modal-video-0" ><img class="play-icon" src="{{{videoplayicon}}}" alt="Play Video">{{{herovideo}}}</a>
             {{/useherovideo}}
         </div>
     </div><!--//container-->
 
-    
+
 </div><!--//hero-section-->
 
 
@@ -70,15 +70,15 @@
             <div class="modal-body">
                 <div class="video-container embed-responsive embed-responsive-16by9">
 	                {{#useyoutubevideo}}
-	                
+
                     <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/{{{herovideoid}}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    
+
                     {{/useyoutubevideo}}
-                    
+
                     {{#usevimeovideo}}
                     <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/{{{herovideoid}}}" width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen"></iframe>
                     {{/usevimeovideo}}
-                    
+
                 </div><!--//video-container-->
             </div><!--//modal-body-->
         </div><!--//modal-content-->

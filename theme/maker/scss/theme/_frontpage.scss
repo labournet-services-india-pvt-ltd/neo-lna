@@ -16,7 +16,7 @@
         z-index: 10;
         position: relative;
         padding-top: 60px;
-        
+
     }
     .headline {
         font-size: 36px;
@@ -47,8 +47,8 @@
 	        }
         }
     }
-    
-    
+
+
 }
 
 .hero-slider-wrapper {
@@ -58,8 +58,8 @@
 	left: 0;
 	top: 0;
     height: $fp-hero-height;
-    background: $theme-text-color-primary; 
-   
+    background: $theme-text-color-primary;
+
     .flexslider {
         margin: 0;
         border: none;
@@ -70,9 +70,9 @@
         .slide {
             display: none;
             height:$fp-hero-height;
-            
+
         }
-        
+
     }
 }
 
@@ -81,7 +81,7 @@
 .hero-slider-mask {
     //@include gradient-x(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1), 0%, 70%);
     @include horizontal-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1), 0%, 70%);
-    
+
     display: block;
     position: absolute;
     width: 100%;
@@ -121,12 +121,12 @@
 	}
 	.icon-holder {
 		text-align: center;
-		
+
 		.material-icons {
 			font-size: 48px;
 		}
 	}
-	
+
 	.image-holder {
 		img {
 			width: 50px;
@@ -135,7 +135,7 @@
 			margin: 0 auto;
 			margin-bottom: 8px;
 		}
-		
+
 	}
 	.item-title {
 		font-size: 18px;
@@ -153,13 +153,13 @@
 
 .featured-section {
 	margin-top: 60px;
-	
+
 	.section-title {
 	    text-align: center;
 	    font-size: 32px;
 	    margin-bottom: 30px;
 	    font-weight: 300;
-	    
+
     }
     .section-inner {
 		margin-left: 23px;
@@ -185,7 +185,7 @@
 		   @include box-shadow(0 2px 6px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22));
 		   color: $theme-text-color-primary;
 	    }
-	    
+
 		&.owl-prev {
 			left: -23px;
 		}
@@ -214,14 +214,14 @@
 	background: $theme-text-color-primary;
 	padding-top:15px;
 	padding-bottom: 15px;
-	
+
 	.form-wrapper {
 		max-width: 600px;
 		margin: 0 auto;
 		position: relative;
-		
+
 	}
-	
+
 	.search-input {
 		width: 100%;
 		border-color: $theme-text-color-primary;
@@ -246,12 +246,12 @@
 
 
 .featured-carousel {
-	
+
 	//margin-bottom: 60px;
-	
+
 	.item {
 		display: block;
-		
+
 	}
 	.item-inner  {
 		position: relative;
@@ -265,7 +265,7 @@
 
 		&:hover {
 			@include box-shadow(0 2px 10px 0 rgba(0,0,0,.2));
-			
+
 			.thumb-holder-inner {
 				@include transform(scale(1.1));
 				@include opacity(0.8);
@@ -285,7 +285,7 @@
 		position: absolute;
 		left:0px;
 		top: 15px;
-		
+
 		padding: 4px 10px;
 		height: 26px;
 		line-height: 19px;
@@ -313,14 +313,14 @@
 		display: block;
 		background: $theme-text-color-primary;
 	}
-	
+
 	.thumb-holder-inner {
 		width: 100%;
 		height: 100%;
 		display: block;
 		@include transition (all 0.4s ease-in-out);
 	}
-	
+
 	.item-content {
 		padding: 30px;
 		font-size: 14px;
@@ -331,7 +331,7 @@
 		font-weight: 500;
 		color: $theme-text-color-primary;
 	}
-	
+
 }
 
 .promo-section {
@@ -346,12 +346,12 @@
 		background-color: #fff;
 
 	}
-	.item-figure {		
+	.item-figure {
 		height: $fp-promo-height;
 		position: relative;
-		
+
 	}
-	
+
 	.item-control {
 		position: absolute;
 		text-align: center;
@@ -379,7 +379,7 @@
 			}
 		}
 	}
-	
+
 	.item-figure-holder {
 		position: absolute;
 		width: 100%;
@@ -387,7 +387,7 @@
 		left: 0;
 		top: 0;
 	}
-	
+
 	.item-content {
 		background-color: $theme-text-color-primary;
 		color: #fff;
@@ -406,9 +406,9 @@
 	.item-content-inner {
 		padding: 30px;
 		height: 360px;
-		
+
 	}
-	
+
 }
 
 .promo-carousel {
@@ -431,16 +431,16 @@
 		padding-top:3px;
 		margin: 0;
 	}
-	
+
 	&.owl-theme .owl-nav .owl-prev {
 		margin-right: 5px;
 	}
-	
+
 	&.owl-theme .owl-nav .disabled {
 		@include opacity(0.3);
 	}
-	
-	
+
+
 }
 
 
@@ -450,7 +450,7 @@
 	}
 	.container-fluid {
 		max-width: 1200px;
-		
+
 	}
 
 	.section-inner {
@@ -468,11 +468,11 @@
 		text-align: center;
 		margin-bottom: 45px;
 	}
-	
+
 	.item {
 		vertical-align: middle;
 		margin-bottom: 15px;
-		
+
 		img {
 			margin: 0 auto;
 			@include opacity(0.8);
@@ -482,13 +482,13 @@
 	.item-inner {
 	    padding: 0 30px;
 	}
-	
+
 }
 
 .testimonial-section {
 	padding-top: 60px;
 	//padding-bottom: 60px;
-	
+
 
 	.section-title {
 		margin-bottom: 30px;
@@ -536,7 +536,7 @@
 	.testimonial-carousel {
 		position: relative;
 	}
-	
+
 	.section-inner {
 		margin-left: 23px;
 		margin-right: 23px;
@@ -561,7 +561,7 @@
 		   @include box-shadow(0 2px 6px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22));
 		   color: $theme-text-color-primary;
 	    }
-	    
+
 		&.owl-prev {
 			left: -23px;
 		}
@@ -583,10 +583,10 @@
 			padding-top: 10px;
 		}
 	}
-	
+
 	.owl-carousel .owl-item {
 		padding-bottom: 15px; /* show box-shadow */
-		
+
 	}
 }
 
@@ -598,15 +598,15 @@
 		text-align: center;
 		font-size: 32px;
 	}
-	
+
 	.row {
 		justify-content: center;
 	}
-	
+
 	.item {
 		margin-bottom: 15px;
 	}
-	
+
 	.item-inner {
         height: 100%;
 		background: #fff;
@@ -620,25 +620,25 @@
 	        font-weight: 500;
 	        a {
 		        color: $theme-text-color-primary;
-		        
+
 		        &:hover {
 			        color: darken($theme-text-color-primary, 10%);
 			        text-decoration: none;
 		        }
 	        }
         }
-        
+
         .icon-holder {
 	        width: 55px;
 	        height: auto;
 	        font-size: 36px;
 	        padding-right: 15px;
         }
-        
+
         .desc {
 	        margin-top: 5px;
         }
-        
+
         .item-link {
 	        position: absolute;
 	        display: block;
@@ -648,15 +648,15 @@
 	        height: 100%;
         }
     }
-	
+
 }
 
 
 .teachers-section {
 	padding-top: 60px;
-	
-	
-	
+
+
+
 	.section-title {
 		margin-bottom: 30px;
 		text-align: center;
@@ -670,28 +670,28 @@
         .title {
 	        font-size: 20px;
         }
-        
+
         .meta {
 	        font-size: 14px;
 	        color: $theme-text-color-secondary;
 	        font-weight: 500;
         }
-		
+
 		img.profile {
 			width: inherit;
 			max-width: 220px;
 		}
-		
+
 		.desc-holder {
 			padding: 1rem;
 		}
 
-		
+
 	}
 	.testimonial-carousel {
 		position: relative;
 	}
-	
+
 	.section-inner {
 		margin-left: 23px;
 		margin-right: 23px;
@@ -716,7 +716,7 @@
 		   @include box-shadow(0 2px 6px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22));
 		   color: $theme-text-color-primary;
 	    }
-	    
+
 		&.owl-prev {
 			left: -23px;
 		}
@@ -738,10 +738,10 @@
 			padding-top: 10px;
 		}
 	}
-	
+
 	.owl-carousel .owl-item {
 		padding-bottom: 15px; /* show box-shadow */
-		
+
 	}
 }
 
@@ -761,7 +761,7 @@
 	overflow: hidden;
 	margin-bottom: 30px;
 	@extend %card-box-shadow;
-	
+
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -779,7 +779,7 @@
 		&.noimage {
 			padding: 30px;
 		}
-		
+
 		.material-icons {
 			width: 80px;
 			height: 80px;
@@ -794,26 +794,26 @@
 			margin-top: -40px;
 			text-align: center;
 			font-size: 36px;
-			
+
 		}
 		.fa {
 			font-size: 36px;
 			margin-top: 18px;
 		}
-		
+
 	}
-	
+
 	.course-thumb {
 		max-width: 100%;
 		height: auto;
 		text-align: center;
-		
+
 	}
-	
+
 	.course-content-wrapper {
 		padding: 15px;
 	    min-height: 140px;
-		
+
 	}
 	.course-title {
 		font-size: 18px;
@@ -859,11 +859,11 @@
 		padding-left: 0;
 		font-weight: bold;
 		color: lighten($theme-text-color-secondary, 10%);
-		
+
 		li {
 			font-size: 13px;
 			display: inline-block;
-			
+
 		}
 		a {
 		     color: lighten($theme-text-color-secondary, 10%);
@@ -877,7 +877,7 @@
 		color: lighten($theme-text-color-secondary, 10%);
 		.customfield {
 			margin-bottom: 5px;
-			
+
 		}
 		.customfieldname {
 			font-weight: bold;
@@ -897,18 +897,18 @@
 		.sectionname {
 			font-size: 1.5rem;
 			font-weight: 300;
-			
+
 		}
 	}
 	.container-fluid {
 		max-width: 1200px;
 	}
-	
+
 	#coursesearch {
 		.coursesearchbox  {
 			margin: 0 auto;
 		}
-		
+
 	}
 }
 
@@ -919,7 +919,7 @@
 		padding: 0;
 		border: none;
     }
-	
+
 }
 
 .pagelayout-frontpage .page-context-header{
@@ -934,7 +934,7 @@
 			    display: inline-block;
 		    }
 	    }
-	    
+
 	}
 }
 
@@ -959,8 +959,8 @@
 		    @include border-radius(2px);
 		    display:inline-block;
 		    line-height: 1.25;
-		    
-		
+
+
 		    &:hover, &:active, &:focus {
 		        background: darken($theme-color-primary, 5%);
 		        border: 2px solid darken($theme-color-primary, 5%);
@@ -969,7 +969,7 @@
 		        text-decoration: none;
 		    }
 		}
-		
+
 	}
 }
 
@@ -1012,16 +1012,16 @@
 		font-size: 14px;
 		color: $theme-text-color-secondary;
 	}
-	
+
 	.category {
-	     
+
 	     @extend %card-box-shadow;
 	     //border: 1px solid $theme-border-color;
-	     margin-bottom: 15px; 
+	     margin-bottom: 15px;
 	     padding: 15px;
 	     background: #fff;
          .category {
-             
+
              @extend %remove-card-box-shadow ;
              border: none;
              &:last-child {
@@ -1038,7 +1038,7 @@
 		    color: $theme-text-color-primary;
 	    }
     }
-	
+
 }
 
 .course_category_tree .category > .content {
@@ -1078,17 +1078,17 @@
 			color: $theme-text-color-primary;
 			font-size: 16px;
 		}
-		
+
 		.author {
 			color: $theme-text-color-light;
 			font-size: 13px;
 			a {
 				color: $theme-text-color-light;
-			
+
 			}
 		}
-		
-		
+
+
 	}
 	.header {
 		h3 {
@@ -1101,7 +1101,7 @@
 			font-size: 13px;
 			a {
 				color: $theme-text-color-light;
-			
+
 			}
 		}
 	}
@@ -1117,18 +1117,18 @@
 		.commands {
 			a{
 				color: $theme-text-color-light;
-				
+
 				&:hover {
 					color: $theme-text-color-secondary;
 				}
 			}
-			
-			
+
+
 		}
 	}
 	.btn-link {
 		color: $theme-color-primary;
-				
+
 		&:hover {
 			color: darken($theme-color-primary, 5%);
 		}
@@ -1171,7 +1171,7 @@
 	.pagelayout-frontpage & {
 		@extend %card-box-shadow;
 	}
-	
+
 	input[type="submit"] {
 		@include transition (all 0.4s ease-in-out);
 	    @include border-radius(2px);
@@ -1184,8 +1184,8 @@
 	    display: inline-block;
 	    position: relative;
 	    top: -1px;
-	    
-	
+
+
 	    &:hover, &:active, &:focus {
 	        background: darken($theme-color-primary, 5%);
 	        border: 2px solid darken($theme-color-primary, 5%);
@@ -1206,23 +1206,23 @@
 	    @include border-radius(2px);
 	    margin-right: 5px;
 	    width: 250px;
-	    
+
 	    &:focus {
 	        border-color: darken($theme-border-color, 10%);
 	        @include box-shadow(none);
-	    }  
+	    }
 	}
 
 }
 
 .faq-section {
-    padding: 60px 0;    
- 
+    padding: 60px 0;
+
     .section-title {
         margin-bottom: 60px;
         font-weight: 300;
 		text-align: center;
-    }    
+    }
     .card {
         background: #fff;
         @extend %card-box-shadow;
@@ -1232,7 +1232,7 @@
             padding: 15px 30px;
             background: #fff;
             border: none;
-            
+
         }
         .card-collapse {
 	        padding-top: inherit !important;
@@ -1253,11 +1253,11 @@
             .text_to_html {
 	            display: inline-block;
             }
-            
+
             a {
                 color: $theme-text-color-primary;
             }
-            
+
             .card-toggle {
                 .fa {
                     margin-right: 10px;
@@ -1268,7 +1268,7 @@
             }
         }
     }
-    
+
     .more {
         margin-top: 30px;
 
@@ -1283,23 +1283,23 @@
 	//@include gradient-x($theme-color-primary, $theme-color-secondary, 0%, 100%);
 	@include horizontal-gradient($theme-color-primary, $theme-color-secondary, 0%, 100%);
 	.cta-section-inner {
-		
+
 		color: #fff;
 		padding: 60px;
 		text-align: center;
-		
+
 	}
-	
+
 	.cta-title {
 		font-size: 24px;
 		font-weight: 400;
 		margin-bottom: 30px;
 		color: #fff;
 	}
-	
+
 	.cta-content {
 		font-size: 16px;
-		
+
 		a {
 			color: rgba(0, 0, 0, 0.5);
 		}
@@ -1321,3 +1321,136 @@
 }
 
 .pagelayout-frontpage .page-header .container-fluid {max-width: inherit}
+
+// aakash mycode
+.page-wrapper {
+		background: white;
+}
+
+.primary-bg-color {
+	background: #00A0E3;
+}
+
+.primary-text-color {
+		color: #00A0E3;
+}
+
+.white-background {
+	background: white;
+}
+
+.dark-text-color {
+	color : #333;
+}
+
+.btn-custom-primary {
+	color: white;
+	background: #00A0E3;
+	padding: 0.7rem 1.5rem;
+}
+
+.carousal-secondary-text {
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.btn-primary-white-outline {
+	color: white;
+	border: 1px solid white;
+	background: #00A0E3;
+	padding: 0.7rem 1.5rem;
+}
+
+.text-white {
+	color:white !important;
+}
+
+.hero-slider-mask {
+	background: rgba(255,255,255,0);
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+.white-btn {
+	background:white !important;
+}
+
+.no-margin-bottom {
+	margin-bottom: 0px !important;
+}
+
+.full-width-text-input {
+	width:100% !important;
+}
+
+//search section css
+
+.search-section {
+	padding-bottom:2rem;
+	padding-top:2rem;
+}
+
+.white-blue-btn {
+	background: white !important;
+	color: #00A0E3;
+}
+
+.search-text-input {
+	border: 1px solid white;
+	background: #00A0E3;
+}
+
+
+//featured course sectionname
+
+.custom-item-title {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.custom-course-stats {
+	font-size: 14px;
+	font-weight: 400;
+	color:#6f6f6f;
+}
+
+.custom-feature-item {
+	border: 1px solid #e5e5e5;
+	background: white;
+}
+
+//company count section
+.company-section {
+	background:#ECECEC;
+}
+
+.count-section-title {
+	font-size: 4.5rem;
+	font-weight: bold;
+}
+
+///labournet academy
+.lb-section {
+	width:100%;
+}
+.la-text {
+		font-weight: 400;
+}
+
+.custom-img-thumbnail {
+	width:10rem;
+	height:auto;
+}
+
+//testimonial item-
+.custom-testimonial-section {
+	background-image:url([[pix:theme|testimonial_bg]]);
+	background-size:cover;
+	background-repeat: no-repeat;
+	min-width:350px;
+}
+
+.custom-testimonial-section .owl-item {
+	width:100%;
+}

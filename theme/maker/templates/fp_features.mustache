@@ -1,31 +1,40 @@
 {{#usefeaturedblocks}}
 
 <div class="featured-section">
-	
+
 	{{#featuredsectiontitle}}
-    <h2 class="section-title">{{{featuredsectiontitle}}}</h2>
+    <h3 class="section-title text-uppercase">{{{featuredsectiontitle}}}</h3>
     {{/featuredsectiontitle}}
-    
+
     <div class="container-fluid">
 	    <div class="section-inner">
 		    <div class="featured-carousel owl-carousel owl-theme">
-			    
+
 			    {{#featuredblocks}}
 				    {{#hasblock}}
-				    <div class="item item-{{{blockcount}}}">
-					    <div class="item-inner">
+				    <div class="item  text-center item-{{{blockcount}}}">
+					    <div class=" custom-feature-item">
 						    {{#blockimage}}
 						    <div class="thumb-holder">
 							    <div class="thumb-holder-inner">
-							    </div><!--//thumb-holder-inner-->
+							    </div>
+									<!--//thumb-holder-inner-->
 						    </div><!--//thumb-holder-->
 						    {{/blockimage}}
 						    <div class="item-content">
 							    {{#blocktitle}}
-							    <h3 class="item-title">{{{blocktitle}}}</h3>
+							    <h3 class="custom-item-title primary-text-color ">{{{blocktitle}}}</h3>
+									<h5 class="custom-course-stats">1002 Learners | Hybrid Course</h5>
 							    {{/blocktitle}}
+									<div class="row mt-4">
+										<div class="col-xs-6 text-left">
+											<h5 class="custom-course-stats">80 hrs Online & 120 hrs Classroom</h5>
+										</div>
+										<div class="col-xs-6 text-right">
+											<h5 class="custom-course-stats">Certification Course</h5>
+										</div>
+									</div>
 							    {{#blockcontent}}
-							    <div class="item-desc">{{{blockcontent}}}</div>
 							    {{/blockcontent}}
 						    </div><!--//item-content-->
 						    {{#blockurl}}
@@ -35,11 +44,11 @@
 					    {{#blocklabel}}
 					    <span class="item-label">{{{blocklabel}}}</span>
 					    {{/blocklabel}}
-				    </div><!--//item-->		
-				    {{/hasblock}}	    
+				    </div><!--//item-->
+				    {{/hasblock}}
 			    {{/featuredblocks}}
-			    
-			    		        
+
+
 			</div><!--//course-carousel-->
 		</div><!--//section-inner-->
     </div><!--//container-fluid-->
