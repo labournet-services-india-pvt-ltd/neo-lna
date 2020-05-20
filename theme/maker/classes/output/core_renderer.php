@@ -641,7 +641,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
 
     public function fp_features() {
-        global $PAGE;
+        global $PAGE, $OUTPUT;
 
         $usehomeblocks = $PAGE->theme->settings->usehomeblocks == 1;
 
@@ -855,7 +855,8 @@ class core_renderer extends \theme_boost\output\core_renderer {
         ) ,
 
         ];
-
+        $fp_features['hours'] = $OUTPUT->image_url('custom-theme/icon1', 'theme');
+        $fp_features['certification'] = $OUTPUT->image_url('custom-theme/icon2', 'theme');
         return $this->render_from_template('theme_maker/fp_features', $fp_features);
     }
 
@@ -1643,6 +1644,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
         ];
 
         return $this->render_from_template('theme_maker/fp_testimonials', $fp_testimonials);
+    }
+
+    public function fp_contact_for_registration() {
+        global $PAGE;
+
+        return $this->render_from_template('theme_maker/fp_contact_for_registration', []);
     }
 
 

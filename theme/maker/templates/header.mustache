@@ -23,7 +23,7 @@
 		<div class="container-fluid">
 			<div class="top-bar-inner">
 				 <div class="special-wrapper navbar">
-					 
+
 					<div class="drawer-toggle" data-region="drawer-toggle">
 			            <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="drawer-toggle-btn" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">
 				            <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
@@ -35,17 +35,17 @@
 				        </button><!--//toggle-drawer-btn-->
 			        </div>
 
-			        
+
 					{{!--//header_socialmedia (theme class function)--}}
 					{{{ output.header_socialmedia}}}
-		            
+
 		            <div class="utilities">
 			            <!-- user_menu -->
 				        {{{ output.user_menu }}}
-				
+
 				        <!-- navbar_plugin_output -->
 				        {{{ output.navbar_plugin_output }}}
-				
+
 				        <!-- search_box -->
 				        <span class="d-none d-md-inline-block">
 				        {{{ output.search_box }}}
@@ -55,38 +55,43 @@
 			</div><!--//top-bar-inner-->
 		</div>
 	</div><!--//top-bar-->
-	
+
 	<div class="branding">
 		<div class="container-fluid">
 			<div class="branding-inner">
-				
-		        
+
+
 		        <a href="{{{ config.wwwroot }}}" class="site-name {{# output.site_logo }}has-logo{{/ output.site_logo }}">
 			        {{^ output.site_logo }}
 			           {{{ sitename }}}
 			        {{/ output.site_logo }}
-			        
+
 		            {{# output.site_logo }}
-   
+
 		                <img class="site-logo" src="{{{ output.site_logo }}}" alt="{{sitename}}">
 
 		            {{/ output.site_logo }}
 		        </a>
-		       
-		       
+
+
 		        <ul class="main-nav d-none d-md-block">
 		            <!-- custom_menu -->
 		            {{{ output.custom_menu }}}
 		            <!-- page_heading_menu -->
 		            {{{ output.page_heading_menu }}}
+								<!-- <li class="nav-item">
+									<div class="transformation">
+											<a class="nav-item btn-custom-primary custom-nav-link-btn nav-link" href="/login/index.php" title="Login">Login</a>
+									</div>
+								</li> -->
 		        </ul>
-			   
+
 			</div><!--//branding-inner-->
-			
+
 		</div><!--//container-fluid-->
 	</div><!--//branding-->
-	
+
 </header><!--//header-->
 
 {{!--//moodle_validator (theme class function)--}}
-{{{ output.moodle_validator}}} 
+{{{ output.moodle_validator}}}

@@ -1325,6 +1325,20 @@
 // aakash mycode
 .page-wrapper {
 		background: white;
+		overflow-x: hidden;
+}
+
+.custom-nav-link-btn {
+	padding: 0px 20px !important;
+	color:white !important;
+}
+
+.top-bar {
+		background: #00A0E3 !important;
+}
+
+.transformation {
+	transform: skew(-20deg, 0);
 }
 
 .primary-bg-color {
@@ -1432,7 +1446,7 @@
 
 ///labournet academy
 .lb-section {
-	width:100%;
+	overflow-x: hidden;
 }
 .la-text {
 		font-weight: 400;
@@ -1453,4 +1467,11 @@
 
 .custom-testimonial-section .owl-item {
 	width:100%;
+}
+
+//contact for registration page
+
+.input-border-blue {
+	border : 2px solid #00A0E3;
+	background: white;
 }
