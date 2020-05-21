@@ -37,32 +37,32 @@
 <head>
     <title>{{{ output.page_title }}}</title>
     <link rel="shortcut icon" href="{{{ output.favicon }}}" />
-    
+
     {{#output.hasinternet}}
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	
+
 	    {{#output.headingfont}}
 	    <link href="https://fonts.googleapis.com/css?family={{ output.headingfont }}:300,400,500,700" rel="stylesheet" />
 	    {{/output.headingfont}}
-	    
+
 	    {{#output.pagefont}}
 	    <link href="https://fonts.googleapis.com/css?family={{ output.pagefont }}:300,400,500,700" rel="stylesheet" />
 	    {{/output.pagefont}}
-    {{/output.hasinternet}} 
-    
+    {{/output.hasinternet}}
+
     {{!--//ios_homescreen_icons (theme class function)--}}
 	{{{ output.ios_homescreen_icons}}}
-    
-    <link rel="stylesheet" href="{{{ config.wwwroot }}}/theme/maker/plugins/flexslider/flexslider.css">    
+
+    <link rel="stylesheet" href="{{{ config.wwwroot }}}/theme/maker/plugins/flexslider/flexslider.css">
     <link rel="stylesheet" href="{{{ config.wwwroot }}}/theme/maker/plugins/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="{{{ config.wwwroot }}}/theme/maker/plugins/owlcarousel/assets/owl.theme.default.min.css">
-    
+
     {{{ output.standard_head_html }}}
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
+
+
+
     {{#output.google_analyticsid}}
     <!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id={{{output.google_analyticsid}}}"></script>
@@ -70,11 +70,11 @@
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-	
+
 	  gtag('config', '{{{output.google_analyticsid}}}');
 	</script>
     {{/output.google_analyticsid}}
-    
+
 </head>
 
 <body {{{ bodyattributes }}}>
@@ -82,46 +82,50 @@
 <div id="page-wrapper" class="page-wrapper {{#output.hideheaderbranding}}branding-section-hidden{{/output.hideheaderbranding}}">
 
     {{{ output.standard_top_of_body_html }}}
-    
+
     {{>theme_maker/header}}
-    
+
     {{!--//header_alert (theme class function)--}}
-    
+
     {{{ output.header_alert}}}
-    
+
     {{!-- fp_slideshow (theme class function) -- }}
     {{{ output.fp_slideshow }}}
-    
+
     {{!-- fp_searchcourses (theme class function) -- }}
     {{{ output.fp_searchcourses }}}
 
     {{!-- fp_benefits (theme class function) --}}
-    {{{ output.fp_benefits }}} 
-    
+    {{{ output.fp_benefits }}}
+
     {{!-- fp_featuredblocks (theme class function) --}}
     {{{ output.fp_features }}}
-    
+
+    {{{ output.fp_companycount }}}
+
     {{!-- fp_promo (theme class function) --}}
     {{{ output.fp_promo }}}
-    
+
     {{!-- fp_logos (theme class function) --}}
     {{{ output.fp_logos }}}
-    
-    
+
+
     {{!-- fp_categories (theme class function) --}}
     {{{ output.fp_categories }}}
-    
-    
+
+
     {{!-- fp_teachers (theme class function) --}}
     {{{ output.fp_teachers }}}
-    
+
 
     {{!-- fp_testimonials (theme class function) --}}
     {{{ output.fp_testimonials }}}
-    
+
+    {{!--contact for registration --}}
+    {{{ output.fp_contact_for_registration }}}
 
     <div id="page" class="container-fluid">
-	     
+
         {{{ output.full_header }}}
 
         <div id="page-content" class="row">
@@ -131,22 +135,22 @@
                     <div> {{{ output.region_main_settings_menu }}} </div>
                 </div>
                 {{/hasregionmainsettingsmenu}}
-                
-                
+
+
                 <section id="region-main" class="{{#hasblocks}}has-blocks{{/hasblocks}}">
                     <div class="card card-block">
                     {{#hasregionmainsettingsmenu}}
                         <div class="region_main_settings_menu_proxy"></div>
                     {{/hasregionmainsettingsmenu}}
-                    
+
                     {{{ output.course_content_header }}}
-                    
+
                     {{{ output.main_content }}}
                     {{{ output.activity_navigation }}}
                     {{{ output.course_content_footer }}}
 
                     </div>
-                </section> 
+                </section>
                 {{#hasblocks}}
 			    <section data-region="blocks-column" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
 			        {{{ sidepreblocks }}}
@@ -154,22 +158,22 @@
 			    {{/hasblocks}}
             </div>
         </div>
-        
+
     </div>
-    
+
     {{{ output.standard_after_main_region_html }}}
-    
-    
+
+
     {{!-- fp_faq (theme class function) --}}
     {{{ output.fp_faq }}}
-    
-    
+
+
     {{!-- fp_ctasection (theme class function) --}}
     {{{ output.fp_ctasection }}}
-    
-    
+
+
     {{> theme_boost/nav-drawer }}
-    
+
 </div>
 
 
@@ -190,5 +194,3 @@ require(['theme_boost/drawer'], function(mod) {
     mod.init();
 });
 {{/js}}
-
-
